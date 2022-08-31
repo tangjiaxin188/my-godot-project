@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://script/chushihua.gd" type="Script" id=1]
+[ext_resource path="res://script/esc.gd" type="Script" id=2]
+
+[sub_resource type="PrismMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1, 1.00546 )
+
+[sub_resource type="SphereMesh" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 1.00548
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2( 200, 601 )
+scale = Vector2( 199, 160 )
+mesh = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MeshInstance2D/StaticBody2D"]
+polygon = PoolVector2Array( -1.00503, -1, 1, -1, 0.00502515, 1 )
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2( 308, 109 )
+scale = Vector2( 54.5, 45.75 )
+mesh = SubResource( 2 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="MeshInstance2D2"]
+physics_interpolation_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D2/RigidBody2D"]
+position = Vector2( -0.00917292, -2.38419e-07 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2( 93, 109 )
+scale = Vector2( 76.5862, 82 )
+mesh = SubResource( 4 )
+
+[node name="RigidBody2D" type="KinematicBody2D" parent="MeshInstance2D3"]
+physics_interpolation_mode = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D3/RigidBody2D"]
+shape = SubResource( 5 )
